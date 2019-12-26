@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { signInInfo } from 'src/sign-in';
+import { LoginInfo } from 'src/login';
 
 @Component({
   selector: 'app-register',
@@ -8,8 +8,8 @@ import { signInInfo } from 'src/sign-in';
 })
 export class RegisterComponent implements OnInit {
 
-  users: signInInfo[] = [];
-  userSign = new signInInfo('', '', '', '');
+  users: LoginInfo[] = [];
+  userSign = new LoginInfo('', '', '', '');
   
   constructor() {
   }
@@ -22,12 +22,12 @@ export class RegisterComponent implements OnInit {
   signIn() {
     console.log('Giriş yapıldı. Kullanıcı = ' + this.userSign.name + " " + this.userSign.surname);
     console.log(this.userSign);  
-    let yeni = new signInInfo(this.userSign.name,this.userSign.surname, this.userSign.email, this.userSign.password);
+    let yeni = new LoginInfo(this.userSign.name,this.userSign.surname, this.userSign.email, this.userSign.password);
     this.users.push(yeni);
   }
 
   print() {
-    console.log(this.users[0] instanceof signInInfo);
+    console.log(this.users[0] instanceof LoginInfo);
     
     console.log(this.users);
   }

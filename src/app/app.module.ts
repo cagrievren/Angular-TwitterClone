@@ -6,15 +6,15 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { PostScreenComponent } from './post-screen/post-screen.component';
 import { DetailComponent } from './detail/detail.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: 'sign-in', component: SignInComponent},
+  { path: 'login', component: LoginComponent},
   { path: 'post-screen', component: PostScreenComponent },
   { path: 'detail', component: DetailComponent },
-  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ]
 
 @NgModule({
@@ -23,7 +23,7 @@ const routes: Routes = [
     RegisterComponent,
     PostScreenComponent,
     DetailComponent,
-    SignInComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
