@@ -8,6 +8,8 @@ export class UsersService implements OnInit {
 
   users: LoginInfo[] = [];
 
+  currentUser: LoginInfo;
+
   constructor() { }
 
   ngOnInit() {

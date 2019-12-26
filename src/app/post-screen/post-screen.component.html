@@ -1,3 +1,11 @@
+<button
+class="btn btn-outline-primary"
+type="button"
+id="button-addon2"
+(click)="goBack()"
+>
+Go Back
+</button>
 <h4 *ngIf="posts.length === 0">No post yet</h4>
 <div class="card bg-light mb-3" *ngFor="let item of posts">
   <div class="card-body">
