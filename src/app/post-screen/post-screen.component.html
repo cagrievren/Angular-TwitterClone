@@ -1,0 +1,29 @@
+<h4 *ngIf="posts.length === 0">No post yet</h4>
+<div class="card bg-light mb-3" *ngFor="let item of posts">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.id }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ item.author }}</h6>
+    <p class="card-text">{{ item.text }}</p>
+  </div>
+</div>
+<hr />
+<div class="input-group mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Here to add post"
+    aria-label="Recipient's username"
+    aria-describedby="button-addon2"
+    [(ngModel)]="post.text"
+  />
+  <div class="input-group-append">
+    <button
+      class="btn btn-outline-primary"
+      type="button"
+      id="button-addon2"
+      (click)="addPost()"
+    >
+      Add
+    </button>
+  </div>
+</div>
