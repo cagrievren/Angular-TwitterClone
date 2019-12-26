@@ -8,13 +8,18 @@ import { UsersService } from '../services/users.service';
 })
 export class LoginComponent implements OnInit {
 
- 
+  checkUser: boolean = false;
 
   constructor(private userService: UsersService) {
   
-   }
+  }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.userService.users;
+    this.checkUser = true;
   }
 
 }
