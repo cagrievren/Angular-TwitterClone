@@ -15,6 +15,6 @@ export class PostServiceService {
     newPost.author = user.email;
     newPost.id = (user.name) + ' ' + (user.surname);
     this.posts.push(newPost);
-    console.log(this.posts);   
-  }
+    console.log(this.posts);     
+  } 
 }

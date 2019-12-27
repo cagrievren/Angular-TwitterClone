@@ -22,8 +22,9 @@ export class PostScreenComponent implements OnInit {
   ngOnInit() {
     this.checkUser = this.userService.currentUser;
     console.log('new user');
-    console.log(this.checkUser);
+    //console.log(this.checkUser);
     this.posts = this.postService.posts;
+    // this.checkServiceArray('oguzhanatasever@yaani.com');
   }
 
   addPost() {
@@ -33,4 +34,8 @@ export class PostScreenComponent implements OnInit {
   goBack() {
     this.router.navigate(['/login']);
   }
+
+  // checkServiceArray(email: string) {
+  //   this.userService.checkArray(email);
+  // }
 }

@@ -22,4 +22,12 @@ export class UsersService implements OnInit {
     this.users.push(new LoginInfo('Cemalettin', 'Evren', 'cemalettinevren@yaani.com', '789345'));
     this.users.push(new LoginInfo('Berkay', 'Evren', 'berkayevren@yaani.com', '456789'));
   }
+
+  // checkArray(email: string) {
+  //   for (let user of this.users) {
+  //     if (user[2] === email) {
+  //       return user;
+  //     }
+  //   }
+    
 }
