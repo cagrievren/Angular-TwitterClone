@@ -11,8 +11,8 @@ import { PostServiceService } from '../services/post-service.service';
   styleUrls: ['./post-screen.component.css']
 })
 export class PostScreenComponent implements OnInit {
-  
-  posts: Post[] = []
+
+  posts: Post[] = [];
   post = new Post('Çağrı Evren', 'cagrievren@yaani.com', '', null);
 
   checkUser: LoginInfo;
@@ -38,4 +38,7 @@ export class PostScreenComponent implements OnInit {
   // checkServiceArray(email: string) {
   //   this.userService.checkArray(email);
   // }
+  deleteFromPosts(index) {
+    this.posts.splice(index, 1);
+  }
 }
