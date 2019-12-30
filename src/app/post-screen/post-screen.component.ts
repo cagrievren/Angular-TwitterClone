@@ -22,23 +22,33 @@ export class PostScreenComponent implements OnInit {
   ngOnInit() {
     this.checkUser = this.userService.currentUser;
     console.log('new user');
-    //console.log(this.checkUser);
     this.posts = this.postService.posts;
-    // this.checkServiceArray('oguzhanatasever@yaani.com');
   }
 
   addPost() {
+    let date = new Date();
+    this.post.timeStamp = date;
     this.postService.addPost(this.post, this.checkUser);
+    this.post.text = '';
   }
 
   goBack() {
     this.router.navigate(['/login']);
   }
 
-  // checkServiceArray(email: string) {
-  //   this.userService.checkArray(email);
-  // }
-  deleteFromPosts(index) {
-    this.posts.splice(index, 1);
+  deletePost(index) {
+    if (this.posts[index].author === this.checkUser.email) {
+      this.posts.splice(index, 1);
+    } else {
+      alert ('You have not authorization to do this!')
+    }
+  }
+
+  isUser(index) {
+    if (this.posts[index].author === this.checkUser.email) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

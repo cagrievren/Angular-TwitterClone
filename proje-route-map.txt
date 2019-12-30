@@ -1,0 +1,7 @@
+1. Kişinin özel profili de görülebilsin.
+2. Beğeni ve yorum
+3. Firebase bağlantısı
+4. Kullanıcı arama ve aranan kullanıcının profili
+5. Authorization
+6. Resim ekleme
+7. Navbar 

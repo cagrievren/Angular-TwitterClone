@@ -10,10 +10,11 @@ export class UsersService implements OnInit {
 
   currentUser: LoginInfo;
 
-  constructor() { }
+  constructor() {
+    this.addSomeUser();
+  }
 
   ngOnInit() {
-    this.addSomeUser();
   }
   addSomeUser() {
     this.users.push(new LoginInfo('Çağrı', 'Evren', 'cagrievren@yaani.com', '123123'));
@@ -23,11 +24,4 @@ export class UsersService implements OnInit {
     this.users.push(new LoginInfo('Berkay', 'Evren', 'berkayevren@yaani.com', '456789'));
   }
 
-  // checkArray(email: string) {
-  //   for (let user of this.users) {
-  //     if (user[2] === email) {
-  //       return user;
-  //     }
-  //   }
-    
 }
