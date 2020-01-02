@@ -1,41 +1,46 @@
 <div class="container-sm">
   <h4>If you are registered, you can login here!</h4>
-  <!-- <h6 *ngIf="checkUser" class="text-warning">
-    <em>Email or password is wrong!</em>
-  </h6> -->
   <hr />
-
-  <div class="form-group">
-    <label for="inputEmail2">Email address</label>
-    <input
-      type="email"
-      class="form-control col-md-3"
-      id="email2"
-      aria-describedby="emailHelp"
-      [(ngModel)]="currentUser.email"
-    />
-    <small id="emailHelp" class="form-text text-muted"
-      >We'll never share your email with anyone else.</small
-    >
-  </div>
-  <div class="form-group">
-    <label for="inputPassword2">Password</label>
-    <input type="password" class="form-control col-md-3" id="pwd2" [(ngModel)]="currentUser.password"/>
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="gridCheck2" />
-    <label class="form-check-label" for="gridCheck2">Check me out</label>
-  </div>
-  <!-- [routerLink]="['/post-screen']" -->
-  <button
-    type="submit"
-    class="btn btn-primary"
-    (click)="login()"
-  >
-    Login
-  </button>
-  |
-  <button type="submit" class="btn btn-primary" [routerLink]="['/register']">
-    Sign Up
-  </button>
+  <!-- [(ngModel)]="currentUser.email" -->
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input
+        type="email"
+        class="form-control col-md-3"
+        id="email"
+        placeholder="Enter your e-mail address"
+        ngModel
+        name="email"
+        required
+        email
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >We'll never share your email with anyone else.</small
+      >
+    </div>
+    <!-- [(ngModel)]="currentUser.password" -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control col-md-3"
+        id="password"
+        placeholder="Enter your password"
+        ngModel
+        name="password"
+        required
+        password
+        minlength="6"
+      />
+    </div>
+    <!-- [routerLink]="['/post-screen']" -->
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+      Login
+    </button>
+    |
+    <button type="submit" class="btn btn-primary" [routerLink]="['/register']">
+      Sign Up
+    </button>
+  </form>
 </div>

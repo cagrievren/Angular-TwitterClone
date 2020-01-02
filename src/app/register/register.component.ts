@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginInfo } from 'src/login.model';
+import { NgForm } from '@angular/forms';
+import { UsersService } from '../services/users.service';;
 
 @Component({
   selector: 'app-register',
@@ -8,28 +9,31 @@ import { LoginInfo } from 'src/login.model';
 })
 export class RegisterComponent implements OnInit {
 
-  users: LoginInfo[] = [];
-  userSign = new LoginInfo('', '', '', '');
+  isLoading = false;
 
-  constructor() {
+  constructor(private usersService: UsersService) {}
+
+  ngOnInit() {}
+
+  onSubmit(form: NgForm) {
+    if (!form.valid) {
+      return;
+    }
+
+    const email = form.value.email;
+    const password = form.value.email;
+
+    this.isLoading = true;
+
+    this.usersService.signUp(email, password).subscribe(resData => {
+      console.log(resData);
+      this.isLoading = false;
+    },
+    error => {
+      console.log(error);
+      this.isLoading = false;
+    });
+
+    form.reset();
   }
-
-  ngOnInit() {
-
-  }
-
-
-  signIn() {
-    console.log('Giriş yapıldı. Kullanıcı = ' + this.userSign.name + " " + this.userSign.surname);
-    console.log(this.userSign);
-    let yeni = new LoginInfo(this.userSign.name,this.userSign.surname, this.userSign.email, this.userSign.password);
-    this.users.push(yeni);
-  }
-
-  print() {
-    console.log(this.users[0] instanceof LoginInfo);
-
-    console.log(this.users);
-  }
-
 }
