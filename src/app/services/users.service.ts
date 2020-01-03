@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RegisterInfo } from 'src/login.model';
+import { RegisterInfo } from 'src/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  user = new RegisterInfo('', '', '', '')
-
   constructor(private http: HttpClient) { }
 
-  signUp(){
-    return this.http.post('https://angulartwitterclone.firebaseio.com/users.json',
-    {
-      name: name,
-      surname: surname,
-      email: email,
-      password: password
+  onCreateUser(userData){
+    console.log('servise girdi');    
+   
+    
+     this.http.post('https://angulartwitterclone.firebaseio.com/users.json', userData)
+    .subscribe(sendingData => {
+      console.log(sendingData);
+    });
+    
+  }
+  getUsers(){
+    this.http.get('https://angulartwitterclone.firebaseio.com/users.json').subscribe((data) => {
+      console.log(data);
     });
   }
-  
+
 }

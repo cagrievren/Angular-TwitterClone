@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { UsersService } from '../services/users.service';;
+import { UsersService } from '../services/users.service';
+import { RegisterInfo } from 'src/user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -10,32 +11,21 @@ import { UsersService } from '../services/users.service';;
 export class RegisterComponent implements OnInit {
 
   isLoading = false;
+  userData: RegisterInfo = {} as RegisterInfo;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private http: HttpClient, private usersService: UsersService) {}
 
   ngOnInit() {}
 
-  onSubmit(form: NgForm) {
-    if (!form.valid) {
-      return;
-    }
+  signUp() {
+    
+    console.log(this.userData);
+    this.usersService.onCreateUser(this.userData);
+    
+    console.log('TSye girdi');   
+  }
 
-    const name = form.value.name;
-    const surname = form.value.surname;
-    const email = form.value.email;
-    const password = form.value.password;
-
-    this.isLoading = true;
-
-    this.usersService.signUp(name, surname, email, password).subscribe(resData => {
-      console.log(resData);
-      this.isLoading = false;
-    },
-    error => {
-      console.log(error);
-      this.isLoading = false;
-    });
-
-    form.reset();
+  getUsers() {
+    this.usersService.getUsers();
   }
 }

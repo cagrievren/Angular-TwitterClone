@@ -1,76 +1,51 @@
 <div class="container-sm">
   <h4>If you are not registered, you can sign up here!</h4>
   <hr />
-  <div *ngIf="isLoading" style="text-align: center;">
-    <app-loading-spinner></app-loading-spinner>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control col-md-3"
+      id="name"
+      placeholder="Enter your name"
+      [(ngModel)]="userData.name"
+    />
+    <!-- {{ userData.name }} -->
   </div>
-  <form
-    #registerForm="ngForm"
-    (ngSubmit)="onSubmit(registerForm)"
-    *ngIf="!isLoading"
-  >
-    <!-- <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        class="form-control col-md-3"
-        id="name"
-        placeholder="Enter your name"
-        ngModel
-        name="name"
-        required
-        name
-      />
-    </div>
-    <div class="form-group">
-      <label for="surname">Surname</label>
-      <input
-        type="text"
-        class="form-control col-md-3"
-        id="surname"
-        placeholder="Enter your surname"
-        ngModel
-        name="surname"
-        required
-        surname
-      />
-    </div> -->
-    <div class="form-group">
-      <label for="email">E-mail address</label>
-      <input
-        type="email"
-        class="form-control col-md-3"
-        id="email"
-        placeholder="Enter your e-mail address"
-        ngModel
-        name="email"
-        required
-        email
-      />
-      <small id="emailHelp" class="form-text text-muted"
-        >We'll never share your email with anyone else.</small
-      >
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control col-md-3"
-        id="password"
-        placeholder="Enter your password"
-        ngModel
-        name="password"
-        required
-        password
-        minlength="6"
-      />
-    </div>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="!registerForm.valid"
+  <div class="form-group">
+    <label for="surname">Surname</label>
+    <input
+      type="text"
+      class="form-control col-md-3"
+      id="surname"
+      placeholder="Enter your surname"
+      [(ngModel)]="userData.surname"
+    />
+  </div>
+  <div class="form-group">
+    <label for="email">E-mail address</label>
+    <input
+      type="email"
+      class="form-control col-md-3"
+      id="email"
+      placeholder="Enter your e-mail address" 
+      [(ngModel)]="userData.email"
+    />
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
     >
-      Sign Up
-    </button>
-  </form>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control col-md-3"
+      id="password"
+      placeholder="Enter your password"
+      [(ngModel)]="userData.password"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="getUsers()">
+    Sign Up
+  </button>
 </div>
