@@ -20,12 +20,14 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    const name = form.value.name;
+    const surname = form.value.surname;
     const email = form.value.email;
-    const password = form.value.email;
+    const password = form.value.password;
 
     this.isLoading = true;
 
-    this.usersService.signUp(email, password).subscribe(resData => {
+    this.usersService.signUp(name, surname, email, password).subscribe(resData => {
       console.log(resData);
       this.isLoading = false;
     },

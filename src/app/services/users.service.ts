@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RegisterInfo } from 'src/login.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
+  user = new RegisterInfo('', '', '', '')
+
   constructor(private http: HttpClient) { }
 
-  signUp(email: string, password: string){
-    return this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBS3a2u0ubAyN6WeaKntisVllVdHSlxRwo',
+  signUp(){
+    return this.http.post('https://angulartwitterclone.firebaseio.com/users.json',
     {
+      name: name,
+      surname: surname,
       email: email,
-      password: password,
-      returnSecureToken: true
+      password: password
     });
   }
+  
 }

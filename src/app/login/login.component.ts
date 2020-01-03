@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LoginInfo } from "src/login.model";
+// import { LoginInfo } from "src/login.model";
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../services/login.service';
@@ -11,12 +11,12 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent implements OnInit {
   
-  currentUser = new LoginInfo(
-    "Çağrı",
-    "Evren",
-    "cagrievren@yaani.com",
-    "123123"
-  );
+  // currentUser = new LoginInfo(
+  //   "Çağrı",
+  //   "Evren",
+  //   "cagrievren@yaani.com",
+  //   "123123"
+  // );
 
   constructor(private router: Router, private loginService: LoginService) {}
 

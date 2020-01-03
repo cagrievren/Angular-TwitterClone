@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/post.model';
-import { LoginInfo } from 'src/login.model';
+// import { LoginInfo } from 'src/login.model';
 import { Router } from '@angular/router';
 import { PostServiceService } from '../services/post-service.service';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +15,7 @@ export class PostScreenComponent implements OnInit {
   loadedPosts: Post[] = [];
   // post = new Post('Çağrı Evren', 'cagrievren@yaani.com', '', null);
 
-  checkUser: LoginInfo;
+  // checkUser: LoginInfo;
 
   constructor(
     private router: Router, 
