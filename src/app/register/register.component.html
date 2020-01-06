@@ -1,6 +1,9 @@
 <div class="container-sm">
   <h4>If you are not registered, you can sign up here!</h4>
   <hr />
+  <div class="alert alert-danger col-md-3" *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
   <div class="form-group">
     <label for="name">Name</label>
     <input

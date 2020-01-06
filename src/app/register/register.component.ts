@@ -11,11 +11,12 @@ import { Subscription } from "rxjs";
   styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent implements OnInit {
-  isLoading = false;
+  
   userData: RegisterInfo = {} as RegisterInfo;
   allUsers: RegisterInfo[] = [];
-  email = "";
+  email: string = '';
   getUserSubscriber: Subscription;
+  error: string = null;
 
   constructor(
     private http: HttpClient,
@@ -53,7 +54,7 @@ export class RegisterComponent implements OnInit {
     }
 
     if (flag === false) {
-      alert("This e-mail is already registered!");
+      this.error = 'This e-mail is already registered!';
     } else {
       this.usersService.onCreateUser(this.userData);
       this.getUserSubscriber.unsubscribe();

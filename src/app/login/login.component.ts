@@ -13,10 +13,13 @@ export class LoginComponent implements OnInit {
   
   allUsers: RegisterInfo[] = [];
 
-  email: string = "";
-  password: string = "";
+  email: string = '';
+  password: string = '';
+  error: string = null;
 
   getUserSubscriber: Subscription;
+
+  isLoading = false;
 
   constructor(private router: Router, private loginService: LoginService) {}
 
@@ -38,6 +41,7 @@ export class LoginComponent implements OnInit {
 
   signIn() {
     this.getUsers();
+    this.isLoading = true;
   }
 
   checkUser() {
@@ -59,7 +63,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/post-screen"]);
       this.getUserSubscriber.unsubscribe();
     } else {
-      alert("E-mail address or password is wrong! Please try again.");
+      this.error = 'E-mail address or password is wrong! Please try again.';
+      this.isLoading = false;
     }
   }
 }
