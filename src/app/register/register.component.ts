@@ -3,7 +3,6 @@ import { UsersService } from "../services/users.service";
 import { RegisterInfo } from "src/user.model";
 import { HttpClient } from "@angular/common/http";
 import { LoginService } from "../services/login.service";
-import { getLocaleFirstDayOfWeek } from "@angular/common";
 import { Subscription } from "rxjs";
 
 @Component({

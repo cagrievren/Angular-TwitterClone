@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-// import { LoginInfo } from "src/login.model";
 import { Router } from "@angular/router";
-import { NgForm } from "@angular/forms";
 import { LoginService } from "../services/login.service";
 import { RegisterInfo } from "src/user.model";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: "app-login",
@@ -11,22 +10,28 @@ import { RegisterInfo } from "src/user.model";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  
   allUsers: RegisterInfo[] = [];
 
   email: string = "";
   password: string = "";
+
+  getUserSubscriber: Subscription;
 
   constructor(private router: Router, private loginService: LoginService) {}
 
   ngOnInit() {}
 
   getUsers() {
-    this.loginService.getUsers().subscribe(data => {
-      for (let key in data) {
-        let value = data[key];
-        this.allUsers.push(value);
-
-        this.checkUser();
+    this.getUserSubscriber = this.loginService.getUsers().subscribe(data => {
+      if (data === null) {
+        alert('E-mail is not exists! Please sign up.');
+      } else {
+        for (let key in data) {
+          let value = data[key];
+          this.allUsers.push(value);
+          this.checkUser();
+        }
       }
     });
   }
@@ -52,8 +57,9 @@ export class LoginComponent implements OnInit {
     if (flag === true) {
       this.allUsers[userIndex];
       this.router.navigate(["/post-screen"]);
+      this.getUserSubscriber.unsubscribe();
     } else {
-      alert("This user is not exists");
+      alert("E-mail address or password is wrong! Please try again.");
     }
   }
 }
