@@ -1,8 +1,6 @@
 <div class="container-sm">
   <h4>If you are registered, you can login here!</h4>
   <hr />
-  <!-- [(ngModel)]="currentUser.email" -->
-  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
     <div class="form-group">
       <label for="email">Email address</label>
       <input
@@ -10,16 +8,12 @@
         class="form-control col-md-3"
         id="email"
         placeholder="Enter your e-mail address"
-        ngModel
-        name="email"
-        required
-        email
+        [(ngModel)]="this.email"
       />
       <small id="emailHelp" class="form-text text-muted"
         >We'll never share your email with anyone else.</small
       >
     </div>
-    <!-- [(ngModel)]="currentUser.password" -->
     <div class="form-group">
       <label for="password">Password</label>
       <input
@@ -27,20 +21,15 @@
         class="form-control col-md-3"
         id="password"
         placeholder="Enter your password"
-        ngModel
-        name="password"
-        required
-        password
-        minlength="6"
+        [(ngModel)]="this.password"
       />
     </div>
     <!-- [routerLink]="['/post-screen']" -->
-    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
-      Login
+    <button type="submit" class="btn btn-primary" (click)="signIn()">
+      Sign In
     </button>
     |
     <button type="submit" class="btn btn-primary" [routerLink]="['/register']">
       Sign Up
     </button>
-  </form>
 </div>

@@ -1,31 +1,63 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../services/users.service';
-import { RegisterInfo } from 'src/user.model';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from "@angular/core";
+import { UsersService } from "../services/users.service";
+import { RegisterInfo } from "src/user.model";
+import { HttpClient } from "@angular/common/http";
+import { LoginService } from "../services/login.service";
+import { getLocaleFirstDayOfWeek } from "@angular/common";
+import { Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent implements OnInit {
-
   isLoading = false;
   userData: RegisterInfo = {} as RegisterInfo;
+  allUsers: RegisterInfo[] = [];
+  email = "";
+  getUserSubscriber: Subscription;
 
-  constructor(private http: HttpClient, private usersService: UsersService) {}
+  constructor(
+    private http: HttpClient,
+    private usersService: UsersService,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {}
 
   signUp() {
-    
-    console.log(this.userData);
-    this.usersService.onCreateUser(this.userData);
-    
-    console.log('TSye girdi');   
+    this.checkDatabase();
   }
 
-  getUsers() {
-    this.usersService.getUsers();
+  checkDatabase() {
+    this.getUserSubscriber = this.loginService.getUsers().subscribe(data => {
+      if (data === null) {
+        this.usersService.onCreateUser(this.userData);
+      } else {
+        for (let key in data) {
+          let value = data[key];
+          this.allUsers.push(value);
+        }
+        this.checkDatabaseEmail();
+      }
+    });
+  }
+
+  checkDatabaseEmail() {
+    let flag = true;
+
+    for (let i = 0; i < this.allUsers.length; i++) {
+      if (this.userData.email === this.allUsers[i].email) {
+        flag = false;
+      }
+    }
+
+    if (flag === false) {
+      alert("This e-mail is already registered!");
+    } else {
+      this.usersService.onCreateUser(this.userData);
+      this.getUserSubscriber.unsubscribe();
+    }
   }
 }
