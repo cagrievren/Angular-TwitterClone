@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/post.model';
 import { Router } from '@angular/router';
 import { PostServiceService } from '../services/post-service.service';
@@ -11,7 +11,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PostScreenComponent implements OnInit {
 
-  loadedPosts: Post[] = [];
+  loadedPosts: Post[] = [
+    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date},
+    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date},
+    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date},
+    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date},
+    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date}
+  ];
   // post = new Post('Çağrı Evren', 'cagrievren@yaani.com', '', null);
 
   // checkUser: LoginInfo;

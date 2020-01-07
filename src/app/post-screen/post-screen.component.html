@@ -7,7 +7,13 @@ id="button-addon2"
 Go Back
 </button>
 <!-- <h4 *ngIf="posts.length === 0">No post yet</h4> -->
-
+<div>
+  <app-post
+  *ngFor="let item of loadedPosts; let i = index"
+  [item]="item"
+  >
+  </app-post>
+</div>
 <hr />
 <div class="input-group mb-3">
   <input
