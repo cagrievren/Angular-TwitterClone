@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/post.model';
-// import { LoginInfo } from 'src/login.model';
 import { Router } from '@angular/router';
 import { PostServiceService } from '../services/post-service.service';
 import { HttpClient } from '@angular/common/http';
