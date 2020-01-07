@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { LoginService } from "../services/login.service";
 import { RegisterInfo } from "src/user.model";
 import { Subscription } from 'rxjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: "app-login",
@@ -21,9 +22,21 @@ export class LoginComponent implements OnInit {
 
   isLoading = false;
 
+  signinForm: FormGroup;
+
   constructor(private router: Router, private loginService: LoginService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.signinForm = new FormGroup({
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, Validators.required)
+    });
+  }
+
+  onSubmit() {
+    console.log(this.signinForm);
+    this.signinForm.reset();
+  }
 
   getUsers() {
     this.getUserSubscriber = this.loginService.getUsers().subscribe(data => {
@@ -50,8 +63,8 @@ export class LoginComponent implements OnInit {
     let flag = false;
     for (let i = 0; i < this.allUsers.length; i++) {
       if (
-        this.email === this.allUsers[i].email &&
-        this.password === this.allUsers[i].password
+        this.signinForm.value['email'] === this.allUsers[i].email &&
+        this.signinForm.value['password'] === this.allUsers[i].password
       ) {
         flag = true;
         userIndex = i;
@@ -64,7 +77,10 @@ export class LoginComponent implements OnInit {
       this.getUserSubscriber.unsubscribe();
     } else {
       this.error = 'E-mail address or password is wrong! Please try again.';
+      //alert('E-mail address or password is wrong! Please try again.');
       this.isLoading = false;
     }
   }
+
+  
 }

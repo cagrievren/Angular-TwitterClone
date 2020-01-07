@@ -1,40 +1,59 @@
-<div class="container-sm">
-  <h4>If you are registered, you can login here!</h4>
-  <hr />
-    <div class="alert alert-danger col-md-3" *ngIf="error">
-      <p>{{ error }}</p>
+<div class="container">
+  <div class="row">
+    <div
+      class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2"
+      *ngIf="!isLoading"
+    >
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+        <h4>If you are registered, you can login here!</h4>
+        <hr />
+        <div class="alert alert-danger" *ngIf="error">
+          <p>{{ error }}</p>
+        </div>
+        <div *ngIf="isLoading" style="text-align: center;">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your e-mail address"
+            formControlName="email"
+          />
+          <span
+            *ngIf="!signinForm.get('email').valid"
+            class="help-block"
+          >
+            Please enter a valid e-mail address!
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter your password"
+            formControlName="password"
+          />
+          <span *ngIf="signinForm.get('password').errors?.required">
+            This field is required!
+          </span>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="signIn()">
+          Sign In
+        </button>
+        |
+        <button
+          type="button"
+          class="btn btn-primary"
+          [routerLink]="['/register']"
+        >
+          Sign Up
+        </button>
+      </form>
     </div>
-    <div *ngIf="isLoading" style="text-align: center;">
-      <app-loading-spinner></app-loading-spinner>
-    </div>
-    <div class="form-group" *ngIf="!isLoading">
-      <label for="email">Email address</label>
-      <input
-        type="email"
-        class="form-control col-md-3"
-        id="email"
-        placeholder="Enter your e-mail address"
-        [(ngModel)]="this.email"
-      />
-      <small id="emailHelp" class="form-text text-muted"
-        >We'll never share your email with anyone else.</small
-      >
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control col-md-3"
-        id="password"
-        placeholder="Enter your password"
-        [(ngModel)]="this.password"
-      />
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="signIn()">
-      Sign In
-    </button>
-    |
-    <button type="submit" class="btn btn-primary" [routerLink]="['/register']">
-      Sign Up
-    </button>
+  </div>
 </div>
