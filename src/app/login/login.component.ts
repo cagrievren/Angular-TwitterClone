@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
 
     if (flag === true) {
       this.allUsers[userIndex];
-      this.router.navigate(["/post-screen"]);
+      this.router.navigate(['/post-screen']);
       this.getUserSubscriber.unsubscribe();
     } else {
       this.error = 'E-mail address or password is wrong! Please try again.';

@@ -1,58 +1,75 @@
-<div class="container-sm">
-  <h4>If you are not registered, you can sign up here!</h4>
-  <hr />
-  <div class="alert alert-danger col-md-3" *ngIf="error">
-    <p>{{ error }}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <h4>If you are not registered, you can sign up here!</h4>
+        <hr />
+        <div class="alert alert-danger" *ngIf="error">
+          <p>{{ error }}</p>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter your name"
+            formControlName="name"
+          />
+          <small *ngIf="signupForm.get('name').errors?.required">
+            <i>This field is required!</i>
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="surname">Surname</label>
+          <input
+            type="text"
+            class="form-control"
+            id="surname"
+            placeholder="Enter your surname"
+            formControlName="surname"
+          />
+          <small *ngIf="signupForm.get('surname').errors?.required">
+            <i>This field is required!</i>
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your e-mail address"
+            formControlName="email"
+          />
+          <small
+            class="col-sm"
+            *ngIf="!signupForm.get('email').valid"
+            class="help-block"
+            ><i>Please enter a valid e-mail address!</i>
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter your password"
+            formControlName="password"
+          />
+          <small *ngIf="signupForm.get('password').errors?.required">
+            <i>This field is required!</i>
+          </small>
+        </div>
+        <button type="button" [disabled]="signupForm.invalid" class="btn btn-primary" (click)="signUp()">
+          Sign Up
+        </button>
+        |
+        <button type="button" class="btn btn-primary" [routerLink]="['/login']">
+          Sign In
+        </button>
+      </form>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input
-      type="text"
-      class="form-control col-md-3"
-      id="name"
-      placeholder="Enter your name"
-      [(ngModel)]="userData.name"
-    />
-    <!-- {{ userData.name }} -->
-  </div>
-  <div class="form-group">
-    <label for="surname">Surname</label>
-    <input
-      type="text"
-      class="form-control col-md-3"
-      id="surname"
-      placeholder="Enter your surname"
-      [(ngModel)]="userData.surname"
-    />
-  </div>
-  <div class="form-group">
-    <label for="email">E-mail address</label>
-    <input
-      type="email"
-      class="form-control col-md-3"
-      id="email"
-      placeholder="Enter your e-mail address" 
-      [(ngModel)]="userData.email"
-    />
-    <small id="emailHelp" class="form-text text-muted"
-      >We'll never share your email with anyone else.</small
-    >
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input
-      type="password"
-      class="form-control col-md-3"
-      id="password"
-      placeholder="Enter your password"
-      [(ngModel)]="userData.password"
-    />
-  </div>
-  <button type="submit" class="btn btn-primary" (click)="signUp()">
-    Sign Up
-  </button>
-  |
-  <button type="submit" class="btn btn-primary" [routerLink]="['/login']">
-    Sign In
-  </button>
 </div>
