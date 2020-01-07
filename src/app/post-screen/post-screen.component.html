@@ -9,8 +9,9 @@ Go Back
 <!-- <h4 *ngIf="posts.length === 0">No post yet</h4> -->
 <div>
   <app-post
-  *ngFor="let item of loadedPosts; let i = index"
-  [item]="item"
+  *ngFor="let post of loadedPosts; let i = index"
+  [post]="post"
+  [i]="i"
   >
   </app-post>
 </div>

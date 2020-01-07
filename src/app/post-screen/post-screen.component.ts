@@ -62,6 +62,7 @@ export class PostScreenComponent implements OnInit {
   //   );
   // }
 
+
   goBack() {
     this.router.navigate(['/login']);
   }
