@@ -10,6 +10,8 @@ import { DetailComponent } from './detail/detail.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { PostComponent } from './components/post/post.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -26,7 +28,9 @@ const routes: Routes = [
     PostScreenComponent,
     DetailComponent,
     LoginComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    NavbarComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
