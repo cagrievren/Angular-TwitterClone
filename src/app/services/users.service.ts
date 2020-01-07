@@ -10,8 +10,6 @@ export class UsersService {
   onCreateUser(userData) {
     this.http
       .post("https://angulartwitterclone.firebaseio.com/users.json", userData)
-      .subscribe(sendingData => {
-        console.log(sendingData);
-      });
+      .subscribe(sendingData => {});
   }
 }

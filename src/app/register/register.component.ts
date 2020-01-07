@@ -4,8 +4,8 @@ import { RegisterInfo } from "src/user.model";
 import { HttpClient } from "@angular/common/http";
 import { LoginService } from "../services/login.service";
 import { Subscription } from "rxjs";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-register",
@@ -13,17 +13,15 @@ import { Router } from '@angular/router';
   styleUrls: ["./register.component.css"]
 })
 export class RegisterComponent implements OnInit {
-  
   userData: RegisterInfo = {} as RegisterInfo;
   allUsers: RegisterInfo[] = [];
-  
-  email: string = '';
+
+  email: string = "";
   error: string = null;
 
   getUserSubscriber: Subscription;
 
   signupForm: FormGroup;
-  
 
   constructor(
     private http: HttpClient,
@@ -34,22 +32,19 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      'name': new FormControl(null, Validators.required),
-      'surname': new FormControl(null, Validators.required),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'password': new FormControl(null, Validators.required)
+      name: new FormControl(null, Validators.required),
+      surname: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, Validators.required)
     });
   }
 
   onSubmit() {
-    console.log(this.signupForm);
     this.signupForm.reset();
   }
 
   signUp() {
     this.checkDatabase();
-    console.log(this.signupForm.value.email);
-    
   }
 
   checkDatabase() {
@@ -74,20 +69,17 @@ export class RegisterComponent implements OnInit {
     this.userData.email = this.signupForm.value.email.toLowerCase();
     this.userData.password = this.signupForm.value.password;
 
-    console.log(this.userData);
-    
-
     for (let i = 0; i < this.allUsers.length; i++) {
-      if (this.signupForm.value['email'] === this.allUsers[i].email) {
+      if (this.signupForm.value["email"] === this.allUsers[i].email) {
         flag = false;
       }
     }
 
     if (flag === false) {
-      this.error = 'This e-mail is already registered!';
+      this.error = "This e-mail is already registered!";
     } else {
       this.usersService.onCreateUser(this.userData);
-      alert('Successfully registered! Now, you can sign in.')
+      alert("Successfully registered! Now, you can sign in.");
       this.getUserSubscriber.unsubscribe();
     }
   }

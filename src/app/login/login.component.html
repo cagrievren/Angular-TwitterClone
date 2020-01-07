@@ -42,7 +42,12 @@
             <i>This field is required!</i>
           </small>
         </div>
-        <button type="button" [disabled]="signinForm.invalid" class="btn btn-primary" (click)="signIn()">
+        <button
+          type="button"
+          [disabled]="signinForm.invalid"
+          class="btn btn-primary"
+          (click)="signIn()"
+        >
           Sign In
         </button>
         |
