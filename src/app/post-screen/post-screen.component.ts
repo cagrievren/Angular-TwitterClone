@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/post.model';
 // import { LoginInfo } from 'src/login.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PostServiceService } from '../services/post-service.service';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-post-screen',
@@ -12,14 +13,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PostScreenComponent implements OnInit {
 
+  currentUser: Post;
   loadedPosts: Post[] = [];
   // post = new Post('Çağrı Evren', 'cagrievren@yaani.com', '', null);
 
   // checkUser: LoginInfo;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private postService: PostServiceService,
+    private dataService: DataService,
+    private route: ActivatedRoute,
     private http: HttpClient) { }
 
   ngOnInit() {
@@ -31,9 +35,13 @@ export class PostScreenComponent implements OnInit {
     //     this.loadedPosts = posts;
     //   }
     // );
+
+    console.log(this.route.snapshot.data.userID);
+
   }
 
-  // onCreatePost() {
+  onCreatePost() {
+
   //   let postData: Post;
   //   postData.id = 'Çağrı Evren';
   //   postData.author = 'cagrievren@yaani.com';
@@ -45,13 +53,13 @@ export class PostScreenComponent implements OnInit {
   //   this.post.text = '';
   //   this.postService.addPost('Çağrı Evren', 'cagrievren@yaani.com',  'First Post', new Date()
   //    );
-  // }
+  }
 
   // onFetchPosts() {
   //   this.postService.fetchPosts().subscribe(
   //     posts => {
   //       console.log(posts);
-        
+
   //       this.loadedPosts = posts;
   //     }
   //   );
