@@ -9,9 +9,18 @@ import { Post } from 'src/app/post.model';
 })
 export class PostServiceService {
 
+  url = 'https://angulartwitterclone.firebaseio.com/posts.json';
   
   constructor(private http: HttpClient) { }
-
+  
+  getPosts() {
+    return this.http.get(this.url);
+  }
+  addPost(postData: Post) {
+    this.http.post(this.url, postData).subscribe(data => {
+      console.log(data);
+    });
+  }
   // addPost(id: string, author: string, text: string, time: Date) {
   //   // let newPost = Object.assign({}, post);
   //   // newPost.author = user.email;
@@ -48,11 +57,6 @@ export class PostServiceService {
   //   }
   // }
 
-  addPost(postData: Post) {
-    this.http.post('https://angulartwitterclone.firebaseio.com/posts.json', postData).subscribe(data => {
-      console.log(data);
-    });
-  }
 
 }
 

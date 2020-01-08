@@ -21,10 +21,10 @@
     type="text"
     class="form-control"
     placeholder="Here to add post"
-    [(ngModel)]="myPost.text"
+    [(ngModel)]="currentUser.text"
   />
   <div class="input-group-append">
-    <button class="btn btn-outline-primary" type="button" (click)="add()">
+    <button class="btn btn-outline-primary" type="button" (click)="onCreatePost()">
       Add
     </button>
 

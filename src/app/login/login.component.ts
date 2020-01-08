@@ -4,7 +4,7 @@ import { LoginService } from "../services/login.service";
 import { RegisterInfo } from "src/user.model";
 import { Subscription } from "rxjs";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { DataService } from '../services/data.service';
+import { DataService } from "../services/data.service";
 
 @Component({
   selector: "app-login",
@@ -12,6 +12,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  
   allUsers: RegisterInfo[] = [];
 
   email: string = "";
@@ -24,12 +25,16 @@ export class LoginComponent implements OnInit {
 
   signinForm: FormGroup;
 
-  constructor(private dataService: DataService,private router: Router, private loginService: LoginService) {}
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
     this.signinForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, Validators.required)
+      email: new FormControl('cagrievren@yaani.com', [Validators.required, Validators.email]),
+      password: new FormControl('123123', Validators.required)
     });
   }
 
@@ -72,7 +77,10 @@ export class LoginComponent implements OnInit {
 
     if (flag === true) {
       this.allUsers[userIndex];
-      this.dataService.setData('user',[this.allUsers[userIndex].name + ' '  + this.allUsers[userIndex].surname ,  this.allUsers[userIndex].email]);
+      this.dataService.setData("user", [
+        this.allUsers[userIndex].name + " " + this.allUsers[userIndex].surname,
+        this.allUsers[userIndex].email
+      ]);
       this.router.navigate(["/post-screen/user"]);
       this.getUserSubscriber.unsubscribe();
     } else {
