@@ -17,6 +17,7 @@ export class PostScreenComponent implements OnInit {
   currentUser: Post = { id: '', author: '', text: '', time: new Date() };
   loadedPosts: Post[] = [];
   postsSubscriber: Subscription;
+  postID: string [] = [];
 
   constructor(
     private router: Router,
@@ -35,6 +36,8 @@ export class PostScreenComponent implements OnInit {
           for (let key in posts) {
             let value = posts[key];
             allPosts.push(value);
+            // this.postID.push(key);
+            // console.log(this.postID);  
           }
           return allPosts;
         })
@@ -51,6 +54,7 @@ export class PostScreenComponent implements OnInit {
   }
 
   onCreatePost() {
+    this.currentUser.time = new Date();
     console.log(this.currentUser);
     this.postsSubscriber.unsubscribe();
     this.postService.addPost(this.currentUser).subscribe(() => {

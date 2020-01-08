@@ -19,6 +19,13 @@ export class PostServiceService {
   addPost(postData: Post) {
     return this.http.post(this.url, postData)
   }
+
+  // deletePost() {
+  //   return this.http.delete(this.url);
+  // }
+
+
+  
   // addPost(id: string, author: string, text: string, time: Date) {
   //   // let newPost = Object.assign({}, post);
   //   // newPost.author = user.email;

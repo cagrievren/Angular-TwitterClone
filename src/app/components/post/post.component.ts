@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from 'src/app/post.model';
+import { PostServiceService } from 'src/app/services/post-service.service';
 
 @Component({
   selector: 'app-post',
@@ -13,12 +14,15 @@ export class PostComponent implements OnInit {
   @Output() deleteCard = new EventEmitter<number>();
   @Input('auth') isAuth: boolean;
 
-  constructor() {}
+  constructor(private postService: PostServiceService) {}
 
   ngOnInit() {
   }
 
   delete() {
     this.deleteCard.emit(this.indexOfPost);
+    // this.postService.deletePost().subscribe(() => {
+      
+    // })
   }
 }

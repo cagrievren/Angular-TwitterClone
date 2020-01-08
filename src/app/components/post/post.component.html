@@ -2,13 +2,13 @@
   <div class="card-body">
     <div class="row">
       <div class="col-sm">
-        <h6 class="card-title">{{ item.id }}</h6>
+        <h5 class="card-title">{{ item.id }}</h5>
       </div>
-      <!-- <div class="col-sm">
-        <h6 class="card-subtitle mb-2 text-muted text-right yasla">
-          {{ item.timeStamp | date: "HH:mm" }}
+      <div class="col-sm">
+        <h6 class="card-subtitle text-muted text-right yasla">
+          {{ item.time | date: "HH:mm" }}
         </h6>
-      </div> -->
+      </div>
     </div>
     <h6 class="card-subtitle mb-2 text-muted">{{ item.author }}</h6>
     <p class="card-text">{{ item.text }}</p>
