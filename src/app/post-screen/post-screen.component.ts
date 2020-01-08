@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/post.model';
-import { Router } from '@angular/router';
+// import { LoginInfo } from 'src/login.model';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PostServiceService } from '../services/post-service.service';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-post-screen',
@@ -11,23 +13,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PostScreenComponent implements OnInit {
 
-  // myPost = new Post('Çağrı','cagri@test.com', 'This is a Çağrı test!', new Date);
-  myPost: Post = {id: 'Çağrı', author: 'cagri@test.com', text: 'This is a Çağrı test!', time: new Date};
-
-  loadedPosts: Post[] = [
-    {id: 'test0', author: 'test@test.com', text: 'This is a test!', time: new Date},
-    {id: 'test1', author: 'test@test.com', text: 'This is a test!', time: new Date},
-    {id: 'test2', author: 'test@test.com', text: 'This is a test!', time: new Date},
-    {id: 'test3', author: 'test@test.com', text: 'This is a test!', time: new Date},
-    {id: 'test4', author: 'test@test.com', text: 'This is a test!', time: new Date}
-  ];
+  currentUser: Post;
+  loadedPosts: Post[] = [];
   // post = new Post('Çağrı Evren', 'cagrievren@yaani.com', '', null);
 
   // checkUser: LoginInfo;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private postService: PostServiceService,
+    private dataService: DataService,
+    private route: ActivatedRoute,
     private http: HttpClient) { }
 
   ngOnInit() {
@@ -39,20 +35,13 @@ export class PostScreenComponent implements OnInit {
     //     this.loadedPosts = posts;
     //   }
     // );
+
+    console.log(this.route.snapshot.data.userID);
+
   }
 
-  add() {
-    this.postService.addPost(this.myPost);
-  }
+  onCreatePost() {
 
-
-
-  deletePost(e) {
-    console.log(e);
-    this.loadedPosts.splice(e,1)
-  }
-
-  // onCreatePost() {
   //   let postData: Post;
   //   postData.id = 'Çağrı Evren';
   //   postData.author = 'cagrievren@yaani.com';
@@ -64,13 +53,13 @@ export class PostScreenComponent implements OnInit {
   //   this.post.text = '';
   //   this.postService.addPost('Çağrı Evren', 'cagrievren@yaani.com',  'First Post', new Date()
   //    );
-  // }
+  }
 
   // onFetchPosts() {
   //   this.postService.fetchPosts().subscribe(
   //     posts => {
   //       console.log(posts);
-        
+
   //       this.loadedPosts = posts;
   //     }
   //   );

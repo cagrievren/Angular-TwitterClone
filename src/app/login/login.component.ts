@@ -4,6 +4,7 @@ import { LoginService } from "../services/login.service";
 import { RegisterInfo } from "src/user.model";
 import { Subscription } from "rxjs";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: "app-login",
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   signinForm: FormGroup;
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private dataService: DataService,private router: Router, private loginService: LoginService) {}
 
   ngOnInit() {
     this.signinForm = new FormGroup({
@@ -71,7 +72,8 @@ export class LoginComponent implements OnInit {
 
     if (flag === true) {
       this.allUsers[userIndex];
-      this.router.navigate(["/post-screen"]);
+      this.dataService.setData('user',[this.allUsers[userIndex].name + ' '  + this.allUsers[userIndex].surname ,  this.allUsers[userIndex].email]);
+      this.router.navigate(["/post-screen/user"]);
       this.getUserSubscriber.unsubscribe();
     } else {
       this.error = "E-mail address or password is wrong! Please try again.";
