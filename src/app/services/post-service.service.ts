@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 import { Post } from 'src/app/post.model';
 
@@ -16,10 +15,9 @@ export class PostServiceService {
   getPosts() {
     return this.http.get(this.url);
   }
+  
   addPost(postData: Post) {
-    this.http.post(this.url, postData).subscribe(data => {
-      console.log(data);
-    });
+    return this.http.post(this.url, postData)
   }
   // addPost(id: string, author: string, text: string, time: Date) {
   //   // let newPost = Object.assign({}, post);

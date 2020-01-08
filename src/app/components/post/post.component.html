@@ -5,12 +5,13 @@
         <h6 class="card-title">{{ item.id }}</h6>
       </div>
       <!-- <div class="col-sm">
-          <h6 class="card-subtitle mb-2 text-muted text-right yasla">{{item.timeStamp | date: 'HH:mm'}}</h6>
-        </div> -->
+        <h6 class="card-subtitle mb-2 text-muted text-right yasla">
+          {{ item.timeStamp | date: "HH:mm" }}
+        </h6>
+      </div> -->
     </div>
     <h6 class="card-subtitle mb-2 text-muted">{{ item.author }}</h6>
     <p class="card-text">{{ item.text }}</p>
-    <!-- <button *ngIf="isUser(i)"  class="btn btn-primary" (click)="deletePost(i)">Delete</button> -->
+    <button *ngIf="isAuth" class="btn" (click)="delete()">Delete</button>
   </div>
-  <!-- <button type="button" (click)="delete()">Delete</button> -->
 </div>

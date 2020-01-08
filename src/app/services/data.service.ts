@@ -11,6 +11,7 @@ export class DataService {
   getData(id) {
     return this.data[id];
   }
+  
   setData(id, [...data]) {
     this.data[id] = [...data];
   }

@@ -9,15 +9,16 @@ import { Post } from 'src/app/post.model';
 export class PostComponent implements OnInit {
 
   @Input('post') item: Post;
-  @Input() i: number;
+  @Input() indexOfPost: number;
   @Output() deleteCard = new EventEmitter<number>();
-  
+  @Input('auth') isAuth: boolean;
+
   constructor() {}
 
   ngOnInit() {
   }
 
   delete() {
-    this.deleteCard.emit(this.i);
+    this.deleteCard.emit(this.indexOfPost);
   }
 }

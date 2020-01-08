@@ -8,6 +8,7 @@ import { DataService } from './data.service';
 export class ResolverService implements Resolve<any>{
 
   constructor( private dataService: DataService) { }
+  
   resolve(route: ActivatedRouteSnapshot) {
 
     return this.dataService.getData(route.paramMap.get('id'));
