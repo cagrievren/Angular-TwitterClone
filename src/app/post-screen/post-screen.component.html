@@ -1,17 +1,17 @@
 <button
-class="btn btn-outline-primary"
-type="button"
-id="button-addon2"
-(click)="goBack()"
+  class="btn btn-outline-primary"
+  type="button"
+  id="button-addon2"
+  (click)="goBack()"
 >
-Go Back
+  Go Back
 </button>
-<!-- <h4 *ngIf="posts.length === 0">No post yet</h4> -->
 <div>
-  <app-post (deleteCard)="deletePost($event)"
-  *ngFor="let post of loadedPosts; let i = index"
-  [post]="post"
-  [i]="i"
+  <app-post
+    (deleteCard)="deletePost($event)"
+    *ngFor="let post of loadedPosts; let i = index"
+    [post]="post"
+    [i]="i"
   >
   </app-post>
 </div>
@@ -21,24 +21,16 @@ Go Back
     type="text"
     class="form-control"
     placeholder="Here to add post"
-    aria-label="Recipient's username"
-    aria-describedby="button-addon2"
-    [(ngModel)]="loadedPosts.text"
+    [(ngModel)]="myPost.text"
   />
   <div class="input-group-append">
-    <button
-      class="btn btn-outline-primary"
-      type="button"
-      id="button-addon2"
-      (click)="onCreatePost()"
-    >
+    <button class="btn btn-outline-primary" type="button" (click)="add()">
       Add
     </button>
-    |
+
     <button
       class="btn btn-outline-primary"
       type="button"
-      id="button-addon2"
       (click)="onFetchPosts()"
     >
       Fetch

@@ -8,6 +8,7 @@ import { Post } from 'src/app/post.model';
   providedIn: 'root'
 })
 export class PostServiceService {
+
   
   constructor(private http: HttpClient) { }
 
@@ -46,6 +47,12 @@ export class PostServiceService {
   //     );
   //   }
   // }
+
+  addPost(postData: Post) {
+    this.http.post('https://angulartwitterclone.firebaseio.com/posts.json', postData).subscribe(data => {
+      console.log(data);
+    });
+  }
 
 }
 

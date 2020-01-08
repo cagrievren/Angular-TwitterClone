@@ -11,6 +11,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PostScreenComponent implements OnInit {
 
+  // myPost = new Post('Çağrı','cagri@test.com', 'This is a Çağrı test!', new Date);
+  myPost: Post = {id: 'Çağrı', author: 'cagri@test.com', text: 'This is a Çağrı test!', time: new Date};
+
   loadedPosts: Post[] = [
     {id: 'test0', author: 'test@test.com', text: 'This is a test!', time: new Date},
     {id: 'test1', author: 'test@test.com', text: 'This is a test!', time: new Date},
@@ -37,6 +40,12 @@ export class PostScreenComponent implements OnInit {
     //   }
     // );
   }
+
+  add() {
+    this.postService.addPost(this.myPost);
+  }
+
+
 
   deletePost(e) {
     console.log(e);
