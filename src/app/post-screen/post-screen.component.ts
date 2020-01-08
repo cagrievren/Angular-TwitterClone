@@ -12,11 +12,11 @@ import { HttpClient } from '@angular/common/http';
 export class PostScreenComponent implements OnInit {
 
   loadedPosts: Post[] = [
-    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date},
-    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date},
-    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date},
-    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date},
-    {id: 'test', author: 'test@test.com', text: 'This is a test!', time: new Date}
+    {id: 'test0', author: 'test@test.com', text: 'This is a test!', time: new Date},
+    {id: 'test1', author: 'test@test.com', text: 'This is a test!', time: new Date},
+    {id: 'test2', author: 'test@test.com', text: 'This is a test!', time: new Date},
+    {id: 'test3', author: 'test@test.com', text: 'This is a test!', time: new Date},
+    {id: 'test4', author: 'test@test.com', text: 'This is a test!', time: new Date}
   ];
   // post = new Post('Çağrı Evren', 'cagrievren@yaani.com', '', null);
 
@@ -36,6 +36,11 @@ export class PostScreenComponent implements OnInit {
     //     this.loadedPosts = posts;
     //   }
     // );
+  }
+
+  deletePost(e) {
+    console.log(e);
+    this.loadedPosts.splice(e,1)
   }
 
   // onCreatePost() {

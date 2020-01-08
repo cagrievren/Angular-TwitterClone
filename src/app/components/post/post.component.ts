@@ -10,9 +10,14 @@ export class PostComponent implements OnInit {
 
   @Input('post') item: Post;
   @Input() i: number;
+  @Output() deleteCard = new EventEmitter<number>();
   
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+  }
+
+  delete() {
+    this.deleteCard.emit(this.i);
   }
 }

@@ -8,7 +8,7 @@ Go Back
 </button>
 <!-- <h4 *ngIf="posts.length === 0">No post yet</h4> -->
 <div>
-  <app-post
+  <app-post (deleteCard)="deletePost($event)"
   *ngFor="let post of loadedPosts; let i = index"
   [post]="post"
   [i]="i"
