@@ -13,7 +13,6 @@ import { Subscription } from "rxjs";
   styleUrls: ["./post-screen.component.css"]
 })
 export class PostScreenComponent implements OnInit {
-  
   currentUser: Post = { id: "", author: "", text: "", time: new Date() };
   loadedPosts: Post[] = [];
   postsSubscriber: Subscription;
@@ -37,7 +36,6 @@ export class PostScreenComponent implements OnInit {
             let value = posts[key];
             allPosts.push(value);
             this.postID.push(key);
-            // console.log(this.postID);
           }
           return allPosts;
         })
@@ -58,23 +56,9 @@ export class PostScreenComponent implements OnInit {
     console.log(this.currentUser);
     this.postsSubscriber.unsubscribe();
     this.postService.addPost(this.currentUser).subscribe(() => {
-      this.postService
-        .getPosts()
-        .pipe(
-          map(posts => {
-            let allPosts: Post[] = [];
-            for (let key in posts) {
-              let value = posts[key];
-              allPosts.push(value);
-            }
-            return allPosts;
-          })
-        )
-        .subscribe((posts: Post[]) => {
-          console.log(posts);
-          this.loadedPosts = posts;
-        });
+      this.shortcutFunc();
     });
+    this.currentUser.text = "";
   }
 
   goBack() {
@@ -88,12 +72,31 @@ export class PostScreenComponent implements OnInit {
       return false;
     }
   }
-  
+
   delete(e) {
-    this.postService.deletePost(this.postID[e]);
+    this.postsSubscriber.unsubscribe();
+    this.postService.deletePost(this.postID[e]).then(() => {
+      this.shortcutFunc();
+    });
   }
-  
-  onyazdir() {
-    console.log(this.postID[0]);
+
+  shortcutFunc() {
+    this.postService
+      .getPosts()
+      .pipe(
+        map(posts => {
+          let allPosts: Post[] = [];
+          for (let key in posts) {
+            let value = posts[key];
+            allPosts.push(value);
+            this.postID.push(key);
+          }
+          return allPosts;
+        })
+      )
+      .subscribe((posts: Post[]) => {
+        console.log(posts);
+        this.loadedPosts = posts;
+      });
   }
 }

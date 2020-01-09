@@ -12,7 +12,6 @@ import { DataService } from "../services/data.service";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  
   allUsers: RegisterInfo[] = [];
 
   email: string = "";
@@ -33,8 +32,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.signinForm = new FormGroup({
-      email: new FormControl('cagrievren@yaani.com', [Validators.required, Validators.email]),
-      password: new FormControl('123123', Validators.required)
+      email: new FormControl("cagrievren@yaani.com", [
+        Validators.required,
+        Validators.email
+      ]),
+      password: new FormControl("123123", Validators.required)
     });
   }
 
