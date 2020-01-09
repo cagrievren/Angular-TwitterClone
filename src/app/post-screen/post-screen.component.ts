@@ -14,10 +14,10 @@ import { Subscription } from "rxjs";
 })
 export class PostScreenComponent implements OnInit {
   
-  currentUser: Post = { id: '', author: '', text: '', time: new Date() };
+  currentUser: Post = { id: "", author: "", text: "", time: new Date() };
   loadedPosts: Post[] = [];
   postsSubscriber: Subscription;
-  postID: string [] = [];
+  postID: string[] = [];
 
   constructor(
     private router: Router,
@@ -36,8 +36,8 @@ export class PostScreenComponent implements OnInit {
           for (let key in posts) {
             let value = posts[key];
             allPosts.push(value);
-            // this.postID.push(key);
-            // console.log(this.postID);  
+            this.postID.push(key);
+            // console.log(this.postID);
           }
           return allPosts;
         })
@@ -59,21 +59,21 @@ export class PostScreenComponent implements OnInit {
     this.postsSubscriber.unsubscribe();
     this.postService.addPost(this.currentUser).subscribe(() => {
       this.postService
-      .getPosts()
-      .pipe(
-        map(posts => {
-          let allPosts: Post[] = [];
-          for (let key in posts) {
-            let value = posts[key];
-            allPosts.push(value);
-          }
-          return allPosts;
-        })
-      )
-      .subscribe((posts: Post[]) => {
-        console.log(posts);
-        this.loadedPosts = posts;
-      });
+        .getPosts()
+        .pipe(
+          map(posts => {
+            let allPosts: Post[] = [];
+            for (let key in posts) {
+              let value = posts[key];
+              allPosts.push(value);
+            }
+            return allPosts;
+          })
+        )
+        .subscribe((posts: Post[]) => {
+          console.log(posts);
+          this.loadedPosts = posts;
+        });
     });
   }
 
@@ -87,5 +87,13 @@ export class PostScreenComponent implements OnInit {
     } else {
       return false;
     }
+  }
+  
+  delete(e) {
+    this.postService.deletePost(this.postID[e]);
+  }
+  
+  onyazdir() {
+    console.log(this.postID[0]);
   }
 }

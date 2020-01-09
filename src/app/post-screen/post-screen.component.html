@@ -10,7 +10,7 @@
       </button>
       <hr>
       <app-post
-        (deleteCard)="deletePost($event)"
+        (deleteCard)="delete($event)"
         *ngFor="let post of loadedPosts; let i = index;"
         [post]="post"
         [indexOfPost]="i"
@@ -35,3 +35,4 @@
     </div>
   </div>
 </div>
+<button (click)="onyazdir()">yazdır</button>

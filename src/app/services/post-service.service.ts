@@ -1,38 +1,42 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
-import { Post } from 'src/app/post.model';
+import { Post } from "src/app/post.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class PostServiceService {
+  url = "https://angulartwitterclone.firebaseio.com/posts";
+  customersRef: AngularFireList<any> = null;
+  constructor(private http: HttpClient, private firestore: AngularFireDatabase ) {
+    this.customersRef = firestore.list('/posts');
+  }
 
-  url = 'https://angulartwitterclone.firebaseio.com/posts.json';
-  
-  constructor(private http: HttpClient) { }
-  
   getPosts() {
-    return this.http.get(this.url);
+    return this.http.get(this.url+'.json');
   }
-  
+
   addPost(postData: Post) {
-    return this.http.post(this.url, postData)
+    return this.http.post(this.url+ '.json', postData);
   }
 
-  // deletePost() {
-  //   return this.http.delete(this.url);
-  // }
+  deletePost(id) {
+    console.log(`${this.url}/${id}`);
+    // this.firestore.collection;
+    // this.firestore.collection('posts/').doc(id).delete();
+    // this.firestore.collection('/posts').doc(id).delete();
+    return this.customersRef.remove(id);
+  }
 
-
-  
   // addPost(id: string, author: string, text: string, time: Date) {
   //   // let newPost = Object.assign({}, post);
   //   // newPost.author = user.email;
   //   // newPost.id = (user.name) + ' ' + (user.surname);
   //   // this.posts.push(newPost);
   //   // console.log(this.posts);
-  //   const postData: Post = { id: id, author: author, text: text, time: time };     
+  //   const postData: Post = { id: id, author: author, text: text, time: time };
   //   this.http
   //   .post<{ name: string }>(
   //     'https://angulartwitterclone.firebaseio.com/posts.json',
@@ -42,7 +46,7 @@ export class PostServiceService {
   //     responseData => {
   //       console.log(responseData);
   //     });
-  // } 
+  // }
 
   //   fetchPosts(){
   //     return this.http
@@ -61,7 +65,4 @@ export class PostServiceService {
   //     );
   //   }
   // }
-
-
 }
-

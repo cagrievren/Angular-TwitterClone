@@ -13,6 +13,10 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 import { ResolverService } from './services/resolver.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PostComponent } from './components/post/post.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -43,7 +47,9 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
   exports: [
     RouterModule
