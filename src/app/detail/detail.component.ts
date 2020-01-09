@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostServiceService } from '../services/post-service.service';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private postService: PostServiceService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

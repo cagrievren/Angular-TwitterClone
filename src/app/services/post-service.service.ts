@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Query } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
@@ -26,5 +26,9 @@ export class PostServiceService {
   deletePost(id) {
     console.log(`${this.url}/${id}`);
     return this.postsRef.remove(id);
+  }
+  
+  getOnlyUser() {
+    let userRef = this.angularFireDatabase.database.ref('/posts');
   }
 }
