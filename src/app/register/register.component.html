@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <app-navbar></app-navbar>
-      <hr />
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <h4><em>If you are registered, you can sign in here!</em></h4>
         <hr />
@@ -64,6 +62,7 @@
             <i>This field is required!</i>
           </small>
         </div>
+        <hr>
         <button
           type="button"
           [disabled]="signupForm.invalid"

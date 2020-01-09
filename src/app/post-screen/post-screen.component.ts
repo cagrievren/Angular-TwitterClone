@@ -27,23 +27,7 @@ export class PostScreenComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.postsSubscriber = this.postService
-      .getPosts()
-      .pipe(
-        map(posts => {
-          let allPosts: Post[] = [];
-          for (let key in posts) {
-            let value = posts[key];
-            allPosts.push(value);
-            this.postID.push(key);
-          }
-          return allPosts;
-        })
-      )
-      .subscribe((posts: Post[]) => {
-        console.log(posts);
-        this.loadedPosts = posts;
-      });
+    this.postsSubscriber = this.shortcutFunc();
     console.log(this.route.snapshot.data.userID);
     let user = this.route.snapshot.data.userID;
 
@@ -81,7 +65,7 @@ export class PostScreenComponent implements OnInit {
   }
 
   shortcutFunc() {
-    this.postService
+    return this.postService
       .getPosts()
       .pipe(
         map(posts => {
