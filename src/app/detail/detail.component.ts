@@ -11,6 +11,7 @@ export class DetailComponent implements OnInit {
   user;
   loadedPosts = [];
   posts = [];
+  loader = false;
   constructor(
     private postService: PostServiceService,
     private route: ActivatedRoute,
@@ -19,6 +20,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.route.snapshot.data.userID[0];
+  
     console.log("ASDFASDFASDFASD");
 
     console.log(this.user);
@@ -34,7 +36,11 @@ export class DetailComponent implements OnInit {
           allPosts.push(value);
           // this.loadedPosts;
         }
+        
       });
+      setTimeout(() => {
+        this.loader = true;
+      }, 4000)
   }
 
   goBack() {
