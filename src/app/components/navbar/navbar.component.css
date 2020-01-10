@@ -1,3 +1,11 @@
 .top-align {
     margin-top: 5% !important;
 }
+
+.input-right-align {
+    margin-left: 10% !important;
+}
+
+.button-right-align {
+    margin-left: 8% !important;
+}

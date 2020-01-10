@@ -33,6 +33,7 @@ export class PostScreenComponent implements OnInit {
 
     this.currentUser.id = user[0];
     this.currentUser.author = user[1];
+    // this.postService.getOnlyUser('cagrievren@yaani.com')
   }
 
   onCreatePost() {

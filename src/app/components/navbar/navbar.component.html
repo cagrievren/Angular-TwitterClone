@@ -12,14 +12,12 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto button-right-align">
       <li class="nav-item">
-        <a class="navbar-brand nav-link" href="#" [routerLink]="['/detail']"
-          >My Profile</a
-        >
+        <button class="btn btn-success" (click)="onDetail()">My Profile</button>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0 input-right-align">
       <input
         class="form-control mr-sm-2"
         type="search"
