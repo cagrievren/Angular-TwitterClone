@@ -24,7 +24,7 @@
         type="search"
         placeholder="Search User"
         id="search"
-        formControlName="name"
+        formControlName="search"
       />
       <button class="btn btn-success my-2 my-sm-0 top-align-button" type="button" (click)="searchUser()">Search</button>
       <li *ngFor="let item of myUsers| slice:0:3;" (click)="git(item)" >

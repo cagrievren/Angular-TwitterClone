@@ -16,7 +16,6 @@ export class NavbarComponent implements OnInit {
   allUsers = [];
   searchText = '';
   myUser;
-  myUsers = [];
 
   searchForm: FormGroup;
 
@@ -30,10 +29,8 @@ export class NavbarComponent implements OnInit {
     this.getUsers();
 
     this.searchForm = new FormGroup({
-      name: new FormControl('', [Validators.required])
+      name: new FormControl(null, [Validators.required])
     });
-
-    this.searchUser();
   }
 
   getUsers() {
@@ -61,15 +58,21 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/detail/user']);
   }
   searchUser() {
+    console.log(this.searchText);
+
     console.log(this.allUsers);
 
-    
     this.allUsers.forEach(element => {
+<<<<<<< HEAD
       if (element.surname.indexOf(this.searchForm.value.name) !== -1) {
         this.myUsers.push(element);
+=======
+      if (element.name.indexOf(this.searchText) > 0) {
+        this.myUser = element;
+>>>>>>> parent of 8554c7b... changes
       }
     });
-    console.log(this.myUsers);
+    console.log(this.myUser);
   }
   onDetail() {
     console.log('onDetail');
