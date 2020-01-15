@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { PostServiceService } from "../services/post-service.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
@@ -20,34 +20,33 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.route.snapshot.data.userID[0];
-  
+    
     console.log("ASDFASDFASDFASD");
 
     console.log(this.user);
 
     let allPosts = [];
-    this.loadedPosts = allPosts;
     this.postService
       .getOnlyUser(`${this.user.author}`)
-      .on("value", function(snapshot) {
+      .on("value", (snapshot) => {
         let posts = snapshot.val();
         for (let key in posts) {
           let value = posts[key];
           allPosts.push(value);
           // this.loadedPosts;
         }
-        
+        this.loadedPosts = allPosts;
       });
-      setTimeout(() => {
-        this.loader = true;
-      }, 1500)
+    setTimeout(() => {
+      this.loader = true;
+    }, 1500);
   }
 
   goBack() {
     this.router.navigate(["/login"]);
   }
 
-  // showPosts() {
-  //   console.log(this.loadedPosts);
-  // }
+  showPosts() {
+    console.log(this.loadedPosts);
+  }
 }

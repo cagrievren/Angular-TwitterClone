@@ -34,9 +34,6 @@ export class PostServiceService {
     console.log("get only user ");
 
     let userRef = this.angularFireDatabase.database.ref("/posts");
-    return userRef
-      .orderByChild("author")
-      .equalTo(id)
-      
+    return userRef.orderByChild("author").equalTo(id);
   }
 }

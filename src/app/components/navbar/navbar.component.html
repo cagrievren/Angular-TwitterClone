@@ -19,18 +19,24 @@
     </ul>
     <form [formGroup]="searchForm" class="top-align" (ngSubmit)="onSubmit()">
       <div class="form-group">
-      <input
-        class="form-control mr-sm-2 top-align-input"
-        type="search"
-        placeholder="Search User"
-        id="search"
-        formControlName="search"
-      />
-      <button class="btn btn-success my-2 my-sm-0 top-align-button" type="button" (click)="searchUser()">Search</button>
-      <li *ngFor="let item of myUsers| slice:0:3;" (click)="git(item)" >
-        {{ item.name }}
-      </li>
-    </div>
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search User"
+          aria-label="Search"
+          formControlName="name"
+        />
+        <button
+          class="btn btn-light my-2 my-sm-0 top-align-button"
+          type="button"
+          (click)="searchUser()"
+        >
+          Search
+        </button>
+        <li *ngFor="let item of myUsers | slice: 0:3" (click)="go(item)">
+          {{ item.name }}
+        </li>
+      </div>
     </form>
   </div>
 </nav>
