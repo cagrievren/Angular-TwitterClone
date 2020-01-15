@@ -17,14 +17,13 @@
         <button class="btn btn-success" (click)="onDetail()">My Profile</button>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0 input-right-align">
       <input
         class="form-control mr-sm-2"
         type="search"
         placeholder="Search User"
         aria-label="Search"
+        [(ngModel)]="searchText"
       />
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <button class="btn btn-success my-2 my-sm-0"  (click)="searchUser()" >Search</button>
   </div>
 </nav>
