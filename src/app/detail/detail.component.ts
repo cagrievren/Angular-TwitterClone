@@ -40,14 +40,14 @@ export class DetailComponent implements OnInit {
       });
       setTimeout(() => {
         this.loader = true;
-      }, 4000)
+      }, 1500)
   }
 
   goBack() {
     this.router.navigate(["/login"]);
   }
 
-  showPosts() {
-    console.log(this.loadedPosts);
-  }
+  // showPosts() {
+  //   console.log(this.loadedPosts);
+  // }
 }

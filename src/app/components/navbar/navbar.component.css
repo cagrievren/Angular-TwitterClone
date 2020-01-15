@@ -1,5 +1,13 @@
 .top-align {
-    margin-top: 5% !important;
+    margin-top: 2% !important;
+}
+
+.top-align-button {
+    margin-top: 3% !important;
+}
+
+.top-align-input {
+    margin-top: 3% !important;
 }
 
 .input-right-align {
@@ -7,5 +15,5 @@
 }
 
 .button-right-align {
-    margin-left: 7% !important;
+    margin-left: 15% !important;
 }

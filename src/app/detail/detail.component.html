@@ -1,7 +1,8 @@
-<div *ngIf="loader">
+<!-- <div *ngIf="loader"> -->
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <br>
         <button
           class="btn btn-outline-primary"
           type="button"
@@ -12,7 +13,7 @@
         <hr />
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
           <a class="navbar-brand">{{ user.id }}</a>
-          <button
+          <!-- <button
             class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -35,12 +36,12 @@
                 Search
               </button>
             </form>
-          </div>
+          </div> -->
         </nav>
-        <hr />
+        <!-- <hr />
         <button class="btn btn-primary" (click)="showPosts()">
           Show Posts
-        </button>
+        </button> -->
         <hr />
         <app-post
           *ngFor="let post of loadedPosts; let i = index"
@@ -52,7 +53,7 @@
       </div>
     </div>
   </div>
-</div>
+<!-- </div>
 <div [hidden]="loadedPosts.length === 3">
   <p >Loading posts...</p>
-</div>
+</div> -->
