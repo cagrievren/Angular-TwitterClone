@@ -16,6 +16,7 @@ import { PostComponent } from "./components/post/post.component";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   { path: "register", component: RegisterComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
       userID: ResolverService
     }
   },
+  { path: "search", component: SearchComponent },
   { path: "", redirectTo: "login", pathMatch: "full" }
 ];
 
@@ -48,7 +50,8 @@ const routes: Routes = [
     LoginComponent,
     LoadingSpinnerComponent,
     NavbarComponent,
-    PostComponent
+    PostComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
