@@ -35,6 +35,8 @@ export class NavbarComponent implements OnInit {
   }
 
   getUsers() {
+    console.log('navbar getUsers');
+    
     this.loginService.getUsers().subscribe((data) => {
       for (let key in data) {
         let value = data[key];
@@ -43,6 +45,7 @@ export class NavbarComponent implements OnInit {
     });
 
   }
+
   go(user){
     console.log('USER INFO');
     console.log(this.userInfo);
@@ -56,6 +59,7 @@ export class NavbarComponent implements OnInit {
     this.dataService.setData('user', [temp]);
     this.router.navigate(['/detail/user']);
   }
+
   searchUser() {
     console.log(this.allUsers);
 
@@ -65,8 +69,8 @@ export class NavbarComponent implements OnInit {
       }
     });
     console.log(this.myUsers);
-
   }
+  
   onDetail() {
     console.log('onDetail');
 

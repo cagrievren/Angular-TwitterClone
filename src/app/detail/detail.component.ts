@@ -33,13 +33,12 @@ export class DetailComponent implements OnInit {
         for (let key in posts) {
           let value = posts[key];
           allPosts.push(value);
-          // this.loadedPosts;
         }
         this.loadedPosts = allPosts;
       });
-    setTimeout(() => {
+      setTimeout(() => {
       this.loader = true;
-    }, 1500);
+    }, 2000);
   }
 
   goBack() {
