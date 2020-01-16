@@ -28,7 +28,6 @@ export class PostScreenComponent implements OnInit {
 
   ngOnInit() {
     this.postsSubscriber = this.shortcutFunc();
-    console.log(this.route.snapshot.data.userID);
     let user = this.route.snapshot.data.userID;
 
     this.currentUser.id = user[0];
@@ -38,7 +37,6 @@ export class PostScreenComponent implements OnInit {
 
   onCreatePost() {
     this.currentUser.time = new Date();
-    console.log(this.currentUser);
     this.postsSubscriber.unsubscribe();
     this.postService.addPost(this.currentUser).subscribe(() => {
       this.shortcutFunc();
@@ -80,7 +78,6 @@ export class PostScreenComponent implements OnInit {
         })
       )
       .subscribe((posts: Post[]) => {
-        console.log(posts);
         this.loadedPosts = posts;
       });
   }

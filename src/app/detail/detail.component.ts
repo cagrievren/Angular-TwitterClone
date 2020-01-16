@@ -20,15 +20,11 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.route.snapshot.data.userID[0];
-    
-    console.log("ASDFASDFASDFASD");
-
-    console.log(this.user);
 
     let allPosts = [];
     this.postService
       .getOnlyUser(`${this.user.author}`)
-      .on("value", (snapshot) => {
+      .on("value", snapshot => {
         let posts = snapshot.val();
         for (let key in posts) {
           let value = posts[key];
@@ -36,16 +32,12 @@ export class DetailComponent implements OnInit {
         }
         this.loadedPosts = allPosts;
       });
-      setTimeout(() => {
+    setTimeout(() => {
       this.loader = true;
-    }, 2000);
+    }, 1500);
   }
 
   goBack() {
     this.router.navigate(["/login"]);
-  }
-
-  showPosts() {
-    console.log(this.loadedPosts);
   }
 }

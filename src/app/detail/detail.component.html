@@ -32,6 +32,7 @@
           </form>
         </div> -->
       </nav>
+      <app-post *ngFor="let post of loadedPosts" [post]="post"></app-post>
       <hr />
       <!-- <button class="btn btn-primary" (click)="showPosts()">
         Show Posts
