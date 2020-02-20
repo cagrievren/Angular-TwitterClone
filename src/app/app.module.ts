@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
-import { RegisterComponent } from "./register/register.component";
+import { SignUpComponent } from "./sign-up/sign-up.component";
 import { PostScreenComponent } from "./post-screen/post-screen.component";
 import { DetailComponent } from "./detail/detail.component";
-import { LoginComponent } from "./login/login.component";
+import { SignInComponent } from "./sign-in/sign-in.component";
 import { RouterModule, Routes } from "@angular/router";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { ResolverService } from "./services/resolver.service";
@@ -19,8 +19,8 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
-  { path: "register", component: RegisterComponent },
-  { path: "login", component: LoginComponent },
+  { path: "register", component: SignUpComponent },
+  { path: "login", component: SignInComponent },
   { path: "post-screen", component: PostScreenComponent },
   {
     path: "post-screen/:id",
@@ -44,10 +44,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
+    SignUpComponent,
     PostScreenComponent,
     DetailComponent,
-    LoginComponent,
+    SignInComponent,
     LoadingSpinnerComponent,
     NavbarComponent,
     PostComponent,

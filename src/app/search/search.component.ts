@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { LoginService } from "../services/login.service";
-import { RegisterInfo } from "src/user.model";
+import { SignInService } from "../services/sign-in.service";
+import { SignUpInfo } from "src/signup.model";
 
 @Component({
   selector: "app-search",
@@ -9,14 +9,14 @@ import { RegisterInfo } from "src/user.model";
 })
 export class SearchComponent implements OnInit {
   searchText;
-  allUsers: RegisterInfo[] = [];
+  allUsers: SignUpInfo[] = [];
 
-  constructor(private loginService: LoginService) {}
+  constructor(private signinService: SignInService) {}
 
   ngOnInit() {}
 
   getUsers() {
-    this.loginService.getUsers().subscribe(data => {
+    this.signinService.getUsers().subscribe(data => {
       for (let key in data) {
         let value = data[key];
         this.allUsers.push(value);

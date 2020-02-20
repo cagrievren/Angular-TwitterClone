@@ -2,7 +2,7 @@ import { Post } from "./../../post.model";
 import { Component, OnInit, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "src/app/services/data.service";
-import { LoginService } from "../../services/login.service";
+import { SignInService } from "../../services/sign-in.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private dataService: DataService,
-    private loginService: LoginService
+    private signinService: SignInService
   ) {}
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit {
   }
 
   getUsers() {
-    this.loginService.getUsers().subscribe(data => {
+    this.signinService.getUsers().subscribe(data => {
       for (let key in data) {
         let value = data[key];
         this.allUsers.push(value);

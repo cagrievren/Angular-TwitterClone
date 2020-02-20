@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { LoginService } from "../services/login.service";
-import { RegisterInfo } from "src/user.model";
+import { SignInService } from "../services/sign-in.service";
+import { SignUpInfo } from "src/signup.model";
 import { Subscription } from "rxjs";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { DataService } from "../services/data.service";
@@ -11,8 +11,8 @@ import { DataService } from "../services/data.service";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
-export class LoginComponent implements OnInit {
-  allUsers: RegisterInfo[] = [];
+export class SignInComponent implements OnInit {
+  allUsers: SignUpInfo[] = [];
 
   email: string = "";
   password: string = "";
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
-    private loginService: LoginService
+    private signinService: SignInService
   ) {}
 
   ngOnInit() {
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   getUsers() {
-    this.getUserSubscriber = this.loginService.getUsers().subscribe(data => {
+    this.getUserSubscriber = this.signinService.getUsers().subscribe(data => {
       if (data === null) {
         alert("E-mail is not exists! Please sign up.");
       } else {

@@ -1,4 +1,4 @@
-export class RegisterInfo {
+export class SignUpInfo {
     constructor(
         public name: string,
         public surname: string,
